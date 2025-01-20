@@ -3,47 +3,28 @@
 ## Prerequisites
 1. Python 3.8 or higher
 2. Google Chrome browser
-3. TA-Lib dependencies (see below)
+3. pip package manager
 
 ## Installation Steps
 
-### 1. Install TA-Lib
-TA-Lib is required for technical analysis. Install it based on your operating system:
-
-#### Windows:
-1. Download the appropriate wheel file from [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib)
-2. Install using pip:
-```bash
-pip install TA_Lib‑0.4.24‑cp39‑cp39‑win_amd64.whl
-```
-
-#### macOS:
-```bash
-brew install ta-lib
-```
-
-#### Linux:
-```bash
-wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
-tar -xzf ta-lib-0.4.0-src.tar.gz
-cd ta-lib/
-./configure --prefix=/usr
-make
-sudo make install
-```
-
-### 2. Clone the Repository
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/CoomSacc69/solana-trading-bot.git
 cd solana-trading-bot
 ```
 
-### 3. Install Python Dependencies
+### 2. Install Dependencies
+The modern ta-lib-python package handles the installation of TA-Lib automatically, so you can simply run:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Install Chrome Extension
+If you encounter any issues with ta-lib-python, you can install it separately first:
+```bash
+pip install --upgrade ta-lib-python
+```
+
+### 3. Install Chrome Extension
 1. Open Chrome and go to `chrome://extensions/`
 2. Enable "Developer mode" in the top right
 3. Click "Load unpacked" button
@@ -99,10 +80,11 @@ The bot creates detailed logs in the `logs` directory:
 
 ### Common Issues
 
-1. TA-Lib Installation Errors
+1. Package Installation Errors
 ```bash
-# For Ubuntu/Debian
-sudo apt-get install python3-dev
+# If you encounter any issues, try:
+pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt --no-cache-dir
 ```
 
 2. Chrome Extension Not Loading
@@ -132,7 +114,7 @@ self.parameters.update({
 ### Updating the Bot
 ```bash
 git pull origin main
-pip install -r requirements.txt
+pip install -r requirements.txt --upgrade
 ```
 
 ### Backing Up Data
